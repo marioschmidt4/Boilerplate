@@ -13,6 +13,7 @@
 	
 		<li> <a href="#trans1" onclick="_init_ui();">Status Tabelle</a> </li>
 		<li> <a href="#trans2" onclick="_init_ui();">Tasks Tabelle</a> </li>
+		<li> <a href="#trans3" onclick="_init_ui();">Bot Mode Tabelle</a> </li>
 	
 	</menu>
 
@@ -64,9 +65,33 @@
 			<!--/form-->
 		</section>
 		
+		<section id="trans3">
+			<h1>Bot Mode Table</h1>
+			
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Type</th>
+						<th>Input</th>
+						<th>Output</th>
+						<th>Sync</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<input type="button" value="Resume" onclick="toggle1(this)">
+		</section>
+		
 	</main>
 	
 	<script>
+	
+var server = "http://localhost:3000/";
+//var server = "http://botnet.artificial.engineering/";
+
+var token = "imo";
 	
 var _init_ui = function() {
 
@@ -93,6 +118,7 @@ _init_ui();
 	
 	<script src="./design/table.js"></script>
 	<script src="./design/tasks.js"></script>
+	<script src="./design/botmode.js"></script>
 	
 </body>
 	

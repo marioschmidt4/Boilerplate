@@ -1,15 +1,13 @@
-//imo
-
 var updateInterval = 2000;
-var tbody = document.querySelectorAll("#trans1 tbody")[0];
+var tbody = document.querySelector("#trans1 tbody");
 
 var loadData = function() {
 	var xhr = new XMLHttpRequest();
 	
-	xhr.open('GET', 'http://botnet.artificial.engineering/api/Status');
+	xhr.open("GET", server + "api/Status");
 	
-	xhr.responseType = 'json';
-	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.responseType = "json";
+	xhr.setRequestHeader("Content-Type", "application/json");
 
 	xhr.send(null);
 	
@@ -24,8 +22,8 @@ var loadData = function() {
 		});
 		
 		updateTable(response);
-	}
-}
+	};
+};
 
 var updateTable = function(data) {
 	var tableRows = [].slice.call(tbody.querySelectorAll("#trans1 tbody tr"));
@@ -38,11 +36,11 @@ var updateTable = function(data) {
 
 	// update rows
 	for (var i = 0; i < tableRows.length; i++) {
-		tableRows[i].querySelectorAll("#trans1 tbody tr .id")[0].innerHTML = data[i].id;
-		tableRows[i].querySelectorAll("#trans1 tbody tr .ip")[0].innerHTML = data[i].ip;
-		tableRows[i].querySelectorAll("#trans1 tbody tr .task")[0].innerHTML = data[i].task;
-		tableRows[i].querySelectorAll("#trans1 tbody tr .workload")[0].innerHTML = data[i].workload;
-		tableRows[i].querySelectorAll("#trans1 tbody tr td input")[0].value = (data[i].workload === 0 ? "Start" : "Stop");
+		tableRows[i].querySelector(".id").innerHTML = data[i].id;
+		tableRows[i].querySelector(".ip").innerHTML = data[i].ip;
+		tableRows[i].querySelector(".task").innerHTML = data[i].task;
+		tableRows[i].querySelector(".workload").innerHTML = data[i].workload;
+		tableRows[i].querySelector("td input").value = (data[i].workload === 0 ? "Start" : "Stop");
 	}
 	
 	// add rows
@@ -58,14 +56,14 @@ var updateTable = function(data) {
 		tbody.appendChild(tr); // html
 		tableRows.push(tr);		// array
 	}
-}
+};
 
 var addTableData = function(rowElement, val, newElementClass) {
 	var td = document.createElement("td");
 	td.setAttribute("class", newElementClass);
 	rowElement.appendChild(td);
 	td.innerHTML = val;
-}
+};
 
 var addTableButton = function(rowElement, workload) {
 	var td = document.createElement("td");
@@ -78,12 +76,12 @@ var addTableButton = function(rowElement, workload) {
 	input.setAttribute("value", btnText);
 	input.setAttribute("onclick", "toggle(this);");
 	td.appendChild(input);
-}
+};
 
 var toggle = function(element) {
 	toggleRequest(element, element.value == "Stop" ? false : true);
 	element.value = (element.value == "Stop" ? "Start" : "Stop");
-}
+};
 
 loadData();
 setInterval(function() {
@@ -94,17 +92,17 @@ setInterval(function() {
 
 var toggleRequest = function(inputElement, newState) {
 	var parentTr = inputElement.parentElement.parentElement;
-	var idString = parentTr.querySelectorAll(".id")[0].innerHTML;
+	var idString = parentTr.querySelector(".id").innerHTML;
 	
 	var idNumber = new Number(idString);
 	
 	var xhr = new XMLHttpRequest();
 	
-	xhr.open('POST', 'http://botnet.artificial.engineering/api/Status');
+	xhr.open("POST", server + "api/Status");
 	
-	xhr.responseType = 'json';
-	xhr.setRequestHeader('Content-Type', 'application/json');
-	//xhr.setRequestHeader('Token', '1234567890')
+	xhr.responseType = "json";
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.setRequestHeader("Token", token);
 
 	var data = {
 		id: idNumber,
@@ -116,5 +114,5 @@ var toggleRequest = function(inputElement, newState) {
 	xhr.onload = function() {
 		console.log("toggleRequest: " + JSON.stringify(xhr.response));
 		loadData();
-	}
-}
+	};
+};

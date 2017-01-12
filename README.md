@@ -33,6 +33,7 @@ bei Antreten des ersten Meilensteins.
 ## Meilenstein 2
 
 - Interface: Uebersicht Status Toggle Button (Start/Stop) in Spalte Aktion
+- Interface: POST integration fuer Toggle Button (/api/Status mit `status:true` oder `status:false`)
 - Interface: Uebersicht Tasks (Loeschen)
 - Interface: Formular Tasks (Hinzufuegen)
 - Interface: POST integration zu CNC Server (/api/Tasks)
