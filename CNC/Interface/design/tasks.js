@@ -70,7 +70,7 @@ var sendTask = function() {
 	
 	
 	// eingabe mit bereits vorhandenen Daten vergleichen...
-	console.log(tasks[0].data.input);
+	//console.log(tasks[0].data.input);
 	
 	function findInput(content) { 
 		//console.log("findInput test");
@@ -78,11 +78,11 @@ var sendTask = function() {
 				content.type === taskSelect.value;
 	}
 
-	console.log(tasks.find(findInput));
+	//console.log(tasks.find(findInput));
 	
 	var findSomething = tasks.find(findInput);
 	if (findSomething !== undefined) {
-		console.log(findSomething.type + " " + taskSelect.value);
+		//console.log(findSomething.type + " " + taskSelect.value);
 		alert("input already exists");
 		return;
 	}
@@ -108,7 +108,7 @@ var sendTask = function() {
 	xhr.send(JSON.stringify(data));
 	
 	xhr.onload = function() {
-		console.log("sendTask: " + JSON.stringify(xhr.response));
+		//console.log("sendTask: " + JSON.stringify(xhr.response));
 		loadDataTasks();
 	};
 };

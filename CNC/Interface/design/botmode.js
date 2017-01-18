@@ -40,8 +40,8 @@ var scope = function() {
 	};
 
 	var updateTable = function(data) {
-		console.log("data: ");
-		console.log(data);
+		//console.log("data: ");
+		//console.log(data);
 	
 		var tableRows = [].slice.call(tbody.querySelectorAll("#trans3 tbody tr"));
 	
@@ -113,7 +113,7 @@ var scope = function() {
 
 	setInterval(function() {
 		if (connection) {
-			tasksCalc.forEach(function(element, index, array) {
+			tasksCalc.forEach(function(element) {
 			
 
 			
@@ -154,7 +154,7 @@ var scope = function() {
 		xhr.send(JSON.stringify(data));
 	
 		xhr.onload = function() {
-			console.log("sendData: " + JSON.stringify(xhr.response));
+			//console.log("sendData: " + JSON.stringify(xhr.response));
 			loadData();
 			element.sync = xhr.response.message;
 		};

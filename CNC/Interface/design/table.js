@@ -112,7 +112,7 @@ var toggleRequest = function(inputElement, newState) {
 	xhr.send(JSON.stringify(data));
 	
 	xhr.onload = function() {
-		console.log("toggleRequest: " + JSON.stringify(xhr.response));
+		//console.log("toggleRequest: " + JSON.stringify(xhr.response));
 		loadData();
 	};
 };
